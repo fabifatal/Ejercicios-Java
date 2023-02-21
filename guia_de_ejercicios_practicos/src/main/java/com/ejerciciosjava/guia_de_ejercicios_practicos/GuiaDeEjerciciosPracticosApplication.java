@@ -2,6 +2,7 @@ package com.ejerciciosjava.guia_de_ejercicios_practicos;
 
 import java.util.Scanner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import java.util.ArrayList;
 
 @SpringBootApplication
 public class GuiaDeEjerciciosPracticosApplication {
@@ -44,7 +45,7 @@ public class GuiaDeEjerciciosPracticosApplication {
 		System.out.println("2) Resta");
 		System.out.println("3) Multiplicación");
 		System.out.println("4)División");
-		int opcion = opcionInt (1,4)
+		int opcion = opcionInt (1,4);
 		
 	}
 	public static double clpToDollar (double clp){
@@ -55,7 +56,7 @@ public class GuiaDeEjerciciosPracticosApplication {
 		return anioActual - anioNacimiento;
 	}
 	/*------EJERCICIO 12-------- */
-	public static void positivoONegetivo (int numero){
+	public static void eje12 (int numero){
 		if (numero == 0){
 			System.out.println("El número ingresado es un cero.");
 		}else if (numero > 0){
@@ -65,7 +66,7 @@ public class GuiaDeEjerciciosPracticosApplication {
 		}
 	}
 	/*------EJERCICIO 13-------- */
-	public static void parOImpar (int numero){
+	public static void eje13 (int numero){
 		if (numero%2==0){
 			System.out.println("El número ingresado es par.");
 		}else{
@@ -74,7 +75,7 @@ public class GuiaDeEjerciciosPracticosApplication {
 	}
 
 	/*------EJERCICIO 17-------- */
-	public static void rangoImpar (int numUno, int numDos){
+	public static void eje17 (int numUno, int numDos){
 		int numImpares = 0;
 		for (int i = numUno ; i<= numDos ; i++){
 			if (i%2!=0){
@@ -86,7 +87,7 @@ public class GuiaDeEjerciciosPracticosApplication {
 	}
 
 	/*------EJERCICIO 18-------- */
-	public static void rangoSalto (int numUno, int numDos, int saltoIni, int saltoFin){
+	public static void eje18 (int numUno, int numDos, int saltoIni, int saltoFin){
 		for (int i = numUno ; i <= numDos ; i++){
 			if (saltoIni == saltoFin){
 				if (i == saltoIni){
@@ -105,8 +106,145 @@ public class GuiaDeEjerciciosPracticosApplication {
 	// 19. Escriba un programa que imprima los números del 1 al 100, que calcule la suma de todos los números pares y la suma de todos los impares.
 	
 	public static void eje19() {
-		
+		int sumPar = 0;
+		int sumImpar = 0;
+		for (int i = 1; i<=100 ; i++){
+			System.out.println(i);
+			if (i % 2 == 0){
+				sumPar += i;
+			}else {
+				sumImpar += i;
+			}
+		}
+		System.out.println("La suma de los número pares es "+sumPar);
+		System.out.println("La suma de los número impares es "+sumImpar);
 	}
+
+	//20. Escriba un programa que permita contar cuántos números múltiplos de 3 hay entre dos extremos dados por el usuario.
+
+	public static void eje20() {
+		int inicio = intIn("Ingrese número inferior: ");
+		int fin = intIn("Ingrese número superior: ");
+		int contador = 0;
+		for (int i = inicio ; i <= fin ; i++){
+			if (i%3 == 0){
+				System.out.println(i);
+				contador++;	
+			}
+		}
+		System.out.println(contador);
+	}
+
+	//21. Escriba un programa que calcule el factorial de un número.
+	public static void eje21() {
+		int num = intIn("Ingrese un número: ");
+		int factorial = 1;
+		for (int i = 1 ; i <= num ; i++){
+			factorial = factorial * i;
+		}
+		System.out.println(factorial);
+	}
+
+	//22. Escriba un programa que calcule la potencia entera positiva de un número dado por teclado.
+	public static void eje22() {
+		int num = intIn("Ingres número base: ");
+		int potencia = intIn("Ingresa potencia: ");
+		int resultado = num;
+		for (int i = 1 ; i<potencia ; i++){
+			resultado = resultado*num;
+		}
+		System.out.println(resultado);
+	}
+
+	//23. Escriba un programa que determine si un número dado por teclado es o no primo.
+	public static void eje23() {
+		int num = intIn("Ingrese un número: ");
+		Boolean primo = false;
+		if (num <= 1){
+			primo = false;
+		}
+		for (int i = 2 ; i < num ; i++){
+			if (num%i==0 && num!=i){
+				primo = false;
+				break;
+			}else{
+				primo = true;
+			}
+		}
+		if (primo){
+			System.out.println("El número es primo.");
+		}else{
+			System.out.println("El número no es primo.");
+		}
+	}
+
+	//24. Escriba un programa que solicite al usuario por teclado entre 1 y 10 e imprima su tabla de multiplicar.
+	public static void eje24() {
+		int num=0;
+		while (num<1 || num>10){
+			num = intIn("Ingrese un número entre 1 y 10");
+			if (num<1 || num>10){
+				System.out.println("El número está fuera de rango. Intente de nuevo, por favor.");
+			}
+		}
+		for (int i = 1; i <= 10 ; i++){
+			System.out.println(num * i);
+		}
+	}
+	
+	//25. El consultorio del Dr. Homero Simpson tiene como política cobrar la consulta con base en el  número de cita, de la siguiente forma: 
+	//las tres primeras citas a $200.000 c/u; las siguientes dos citas a $150.000 c/u; las tres siguientes citas a $100.000 c/u y las restantes a $50.000 c/u, mientras dure el tratamiento.
+	//Escriba un programa que permita determinar cuánto pagará un paciente por una cita y cuánto pagará un paciente por el total de su tratamiento, dado un número de citas.
+	public static void eje25() {
+		int numCita = intIn("Ingrese número de consultas: ");
+		int numConsulta = intIn("Ingrese el número de consulta del que desea conocer el valor: ");
+		ArrayList <Integer> valoresCita = new ArrayList<Integer>(); 
+		for (int i = 1; i <= numCita; i++){
+			if (i <= 3){
+				valoresCita.add(200000);
+			}else if (i <= 5){
+				valoresCita.add(150000);
+			}else if (i <= 8){
+				valoresCita.add(100000);
+			}else{
+				valoresCita.add(50000);
+			}
+		}
+		int totalTratamiento = 0;
+		for (int i = 0 ; i < valoresCita.size() ; i++){
+			totalTratamiento += valoresCita.get(i);
+		}
+		System.out.println("La cita consultado es igual a "+valoresCita.get(numConsulta-1));
+		System.out.println("El costo total del tratamiento es "+totalTratamiento);
+	}
+
+	/*26. La fábricas “Aplaplac” produce artículos con claves (1, 2, 3, 4, 5 y 6). Escriba un programa que permita calcular los precios de venta, de acuerdo a las siguientes reglas:
+	• Costo de producción = materia prima + mano de obra + gastos de fabricación.
+	• Precio de venta = costo de producción + 45 % de costo de producción.
+	• El costo de la mano de obra se obtiene de la siguiente forma: para los productos con clave 
+	3 o 4 se carga 75 % del costo de la materia prima; para los que tienen clave 1 y 5 se carga 
+	80 %, y para los que tienen clave 2 o 6, 85 %.
+	Para calcular el gasto de fabricación se considera que si el artículo que se va a producir tiene 
+	claves 2 o 5, este gasto representa 30 % sobre el costo de la materia prima; si las claves son 3 o 
+	6, representa 35 %; si las claves son 1 o 4, representa 28 %. La materia prima tiene el mismo 
+	costo para cualquier clave.*/
+
+	public static void eje26() {
+		Double clave = 0.0;
+		while (clave<1 || clave>5){
+			clave = doubleIn("Ingrese el número de clave del producto (de 1 a 6): ");
+			if (clave<1 || clave>5){
+				System.out.println("El número está fuera de rango. Intente de nuevo, por favor.");
+			}
+		}
+		Double materiaPrima = doubleIn("Ingrese el valor de la materia prima.");
+		Double manoDeObra = 0.0;
+	
+
+
+	}
+
+
 	public static void main(String[] args) {
 		Scanner teclado = new Scanner (System.in);
 		
@@ -278,21 +416,14 @@ public class GuiaDeEjerciciosPracticosApplication {
 		rangoImpar(numInferior, numSuperior);
 		 */
 
-		/*
-		18. Escriba un programa que imprima todos los números naturales entre dos extremos dados por el 
-		usuario, con un salto también indicado por el usuario.
-		 */
 		
-		// int numInf = intIn("Ingresa número inferior:");
-		// int numSup = intIn("Ingresa número superior:");
-		// int saltoInit = intIn("Ingresa inicio del salto:");
-		// int saltoFinal = intIn("Ingresa final del salto:");
-		// rangoSalto(numInf, numSup, saltoInit, saltoFinal);
-		
-		/*
-		 * 19. Escriba un programa que imprima los números del 1 al 100, que calcule la suma de todos los números pares y la suma de todos los impares.
-		 */
-		
+		//eje19();
+		//eje20();
+		//eje21();
+		//eje22();
+		//eje23();
+		//eje24();
+		eje25();
 
 	}
 }

@@ -63,7 +63,7 @@ public class EjerciciosArrayJavaApplication {
 	//3. Escriba un programa que permita calcular la suma de todos los elementos del siguiente arreglo: [1, 3, 6, 82, 23]
 	public static void eje3() {
 		//Descripción programa
-		System.out.println("Este programa imprimirá al revés cada uno de los elementos del siguiente arreglo: [1, 3, 6, 82, 23].");
+		System.out.println("Este programa calculará la suma de cada uno de los elementos del siguiente arreglo: [1, 3, 6, 82, 23].");
 		//Creamos Array
 		ArrayList <Integer> arrayInt = new ArrayList<Integer>();
 		arrayInt.add(1);
@@ -192,7 +192,35 @@ public class EjerciciosArrayJavaApplication {
 		System.out.println(arrayMultiplos);
 	}
 
+	
+
 	public static void main(String[] args) {
+		int opcion = intIn("Ingrese número de opción");
+		switch (opcion) {
+			case 1:
+				eje1();
+				break;
+			case 2:
+				eje2();
+				break;
+			case 3:
+				eje3();
+				break;
+			case 4:
+				eje4();
+				break;
+			case 5:
+				eje5();
+				break;
+			case 6:
+				eje5();
+			case 7:
+				eje7();
+			case 8:
+				eje8();	
+			default:
+				break;
+		}
 		//eje1();
 		//eje2();
 		//eje3();
