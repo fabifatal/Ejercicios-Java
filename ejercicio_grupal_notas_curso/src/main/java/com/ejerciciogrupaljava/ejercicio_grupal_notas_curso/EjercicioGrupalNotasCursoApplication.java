@@ -88,6 +88,7 @@ public class EjercicioGrupalNotasCursoApplication {
 	//menú
 	
 	public static void main(String[] args) {
+		Scanner teclado = new Scanner (System.in);
 		//Presentación programa
 		System.out.println(
 			 "000000   00   00   00000    000000   000000\n"
@@ -150,6 +151,7 @@ public class EjercicioGrupalNotasCursoApplication {
 		System.out.println("_____________________________________________\n");
 		}
 		while (opcion != 0);
+		teclado.close();
 	}
 
 }

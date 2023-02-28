@@ -195,40 +195,40 @@ public class EjerciciosArrayJavaApplication {
 	
 
 	public static void main(String[] args) {
-		int opcion = intIn("Ingrese número de opción");
-		switch (opcion) {
-			case 1:
-				eje1();
-				break;
-			case 2:
-				eje2();
-				break;
-			case 3:
-				eje3();
-				break;
-			case 4:
-				eje4();
-				break;
-			case 5:
-				eje5();
-				break;
-			case 6:
-				eje5();
-			case 7:
-				eje7();
-			case 8:
-				eje8();	
-			default:
-				break;
-		}
-		//eje1();
-		//eje2();
-		//eje3();
-		//eje4();
-		//eje5();
-		//eje6();
-		//eje7();
-		//eje8();
+		
+		System.out.println("¿Que desea realizar?\n");
+		System.out.println("1 Ejercicio 1\n");
+		int opcion = 1;
+		opcion = intIn("Ingrese número de opción");
+			switch (opcion) {
+				case 1:
+					eje1();
+					break;
+				case 2:
+					eje2();
+					break;
+				case 3:
+					eje3();
+					break;
+				case 4:
+					eje4();
+					break;
+				case 5:
+					eje5();
+					break;
+				case 6:
+					eje5();
+				case 7:
+					eje7();
+				case 8:
+					eje8();	
+				default:
+					break;
+			}
+			
+
+		
+		
 	}
 
 }
